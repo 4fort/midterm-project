@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { type ApiResponse } from "./../types/ApiResponse";
-import { type Country } from "./../types/Country";
+import { type ApiResponse } from "../../types/ApiResponse";
+import { type Country } from "../../types/Country";
 
 const API_URL = "https://countries-api-abhishek.vercel.app/countries";
 
