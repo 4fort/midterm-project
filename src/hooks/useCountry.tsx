@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { type ApiResponse } from "../../types/ApiResponse";
-import { type Country } from "../../types/Country";
+import { type ApiResponseType } from "../../types/ApiResponseType";
+import { type CountryType } from "../../types/CountryType";
 
 const API_URL = "https://countries-api-abhishek.vercel.app/countries";
 
 export default function useCountry() {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [countries, setCountries] = useState<Country[] | []>([]);
+  const [data, setData] = useState<ApiResponseType | null>(null);
+  const [countries, setCountries] = useState<CountryType[] | []>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +30,7 @@ export default function useCountry() {
     };
   }, []);
 
-  const getSingleCountry = async (name: string): Promise<ApiResponse> => {
+  const getSingleCountry = async (name: string): Promise<ApiResponseType> => {
     const response = await fetch(`${API_URL}/${name}`);
     if (!response.ok) {
       throw new Error("Network response was not ok");

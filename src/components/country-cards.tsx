@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
-import { ApiResponse } from "types/ApiResponse";
-import { Country } from "types/Country";
+import { ApiResponseType } from "types/ApiResponseType";
+import { CountryType } from "types/CountryType";
 import { isErrorResponse } from "@/lib/utils";
 import { Button } from "./ui/button";
 
-export default function CountryCards({ data }: { data: ApiResponse }) {
+export default function CountryCards({ data }: { data: ApiResponseType }) {
   const navigate = useNavigate();
 
   return (
@@ -19,7 +19,7 @@ export default function CountryCards({ data }: { data: ApiResponse }) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {(data.data as Country[]).map((country, i) => (
+          {(data.data as CountryType[]).map((country, i) => (
             <div
               key={`${country.name}-${country.capital}-${i}`}
               className="h-64 border border-border rounded-lg shadow-sm overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-lg"
@@ -32,7 +32,7 @@ export default function CountryCards({ data }: { data: ApiResponse }) {
                     {country.name}
                   </h2>
                   <p className="text-white/90 font-medium">{country.capital}</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-black/40 backdrop-blur-sm text-white text-sm rounded-full">
+                  <span className="inline-block mt-2 px-3 py-1 bg-black/40 text-white text-sm rounded-full">
                     {country.region}
                   </span>
                 </div>

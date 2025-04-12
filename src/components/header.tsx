@@ -1,23 +1,35 @@
-import React from "react";
+import { Globe } from "lucide-react";
+import { ThemeToggle } from "./ui/theme-toggle";
+import { Link, useLoaderData, useNavigate } from "react-router";
+import { GlobalSearch } from "./global-search";
 
 export default function Header() {
+  const countryNames = useLoaderData();
+  const navigate = useNavigate();
+
   return (
-    <header className="flex justify-between items-center border border-border rounded-xl p-6">
-      <h1 className="text-2xl font-bold">Visualizing Country Information</h1>
-      {/* <nav>
+    <header className="sticky top-0 z-50 grid grid-cols-2 md:grid-cols-3 border-b border-border p-6 backdrop-blur-lg bg-background/80">
+      <h1
+        className="md:text-2xl font-bold flex items-center gap-2 whitespace-nowrap cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        <Globe className="hidden md:inline" /> Visualizing Country Information
+      </h1>
+
+      <nav className="hidden md:flex items-center justify-center">
         <ul className="flex space-x-4">
           <li>
-            <a href="/" className="hover:text-blue-300">
+            <Link to="/" className="hover:text-blue-300">
               Home
-            </a>
-          </li>
-          <li>
-            <a href="/about" className="hover:text-blue-300">
-              About
-            </a>
+            </Link>
           </li>
         </ul>
-      </nav> */}
+      </nav>
+
+      <div className="flex items-center justify-end gap-4">
+        <GlobalSearch items={countryNames} />
+        <ThemeToggle />
+      </div>
     </header>
   );
 }
