@@ -1,9 +1,9 @@
-import { Country } from "./Country";
+import { CountryType } from "./CountryType";
 
-export type ApiResponse =
+export type ApiResponseType =
   | {
       message: string;
-      data: Country | Country[];
+      data: CountryType | CountryType[];
       statusCode: string;
     }
   | {

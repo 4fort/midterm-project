@@ -1,4 +1,4 @@
-export interface Country {
+export interface CountryType {
   name: string;
   capital: string;
   region: Region;
@@ -28,3 +28,5 @@ export enum Region {
   Oceania = "Oceania",
   SouthAmerica = "South America",
 }
+
+export const regions = Object.values(Region);
